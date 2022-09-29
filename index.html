@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>强缓存</h2>
+    <ul>
+        <li><b>Expires:</b>第一次请求,服务器返回expires,记录文件的过期时间,第二次请求浏览器进行比较,若没过期命中强缓存</li>
+        <li><b>Cache-Control:</b>第一次请求,服务器返回max-age,记录文件的有效时间,浏览器计算得到一个过期时间
+                第二次请求浏览器进行比较,若没过期命中强缓存</li>
+    </ul>
+    <h2>强缓存没有则进行协商缓存</h2>
+    <ul>
+        <li><b>last-modified:</b> 第一次请求,服务器返回last-modified,记录文件的最后修改时间
+            ,第二次带上if-modified-since,服务器根据这个时间判断文件是否修改，是否要返回新文件</li>
+        <li><b>etag:</b>第一次请求,服务器返回etag,记录文件的哈希值
+                第二次请求带上if-none-match,服务器比较前后哈希值判断文件是否修改，是否要返回新文件</li>
+    </ul>
+    <script src="./cache5s.js"></script>
+    <script src="./expire5s.js"></script>
+    <script src="./last-modified.js"></script>
+    <script src="./etag.js"></script>
+</body>
+</html>
